@@ -24,7 +24,7 @@ column url => {
     is_nullable => 0,
 };
 
-column creation_date => {
+column publication_date => {
     data_type => 'date',
     is_nullable => 1,
 };
@@ -40,7 +40,15 @@ column bitly_url => {
     is_nullable => 1,
 };
 
-has_many article_tag => 'Newsmill::Schema::Result::ArticleTag', 'article_id';
+column edition_section_id => {
+    data_type => 'int',
+    is_nullable => 1,
+};
+
+has_many article_tags => 'Newsmill::Schema::Result::ArticleTag', 'article_id';
 many_to_many( tags => 'article_tag', 'tag' );
+
+belongs_to 'edition_section' => 'Newsmill::Schema::Result::EditionSection',
+    'edition_section_id';
 
 1;
