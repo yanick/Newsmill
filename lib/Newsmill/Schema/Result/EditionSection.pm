@@ -39,8 +39,10 @@ column rank => {
 belongs_to section_type => 'Newsmill::Schema::Result::SectionType',
     'section_type_id';
 
-has_many articles => 'Newsmill::Schema::Result::Article',
-'edition_section_id';
+has_many section_articles => 'Newsmill::Schema::Result::SectionArticle',
+    'edition_section_id';
+
+many_to_many articles => 'section_articles', 'article';
 
 belongs_to edition => 'Newsmill::Schema::Result::Edition',
     'edition_id';

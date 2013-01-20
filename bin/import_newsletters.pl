@@ -60,6 +60,8 @@ sub import_sections {
 sub import_articles {
     my( $section, @entries ) = @_;
 
+    my $rank = 0;
+
     for my $art ( @entries ) {
         say "\t\tadd article ", $art->{title};
 
@@ -67,6 +69,7 @@ sub import_articles {
         $pub = DateTime->new( year => $1, month => $2, day => $3 )
             if $art->{ts} =~ /(\d{4})\.(\d+)\.(\d+)/;
 
+        $DB::single = 1;
         my $article = $section->add_to_articles({ 
             title => $art->{title},
             description => $art->{text},
@@ -77,6 +80,8 @@ sub import_articles {
                     { tag => { label => $_ } }
                 } @{ $art->{tags} || [] }
             ],
+        }, {
+            rank => ++$rank,
         });
     }
 }

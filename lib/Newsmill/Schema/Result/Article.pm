@@ -34,21 +34,7 @@ column description => {
     is_nullable => 1,
 };
 
-column bitly_url => {
-    data_type => 'varchar',
-    size => 200,
-    is_nullable => 1,
-};
-
-column edition_section_id => {
-    data_type => 'int',
-    is_nullable => 1,
-};
-
 has_many article_tags => 'Newsmill::Schema::Result::ArticleTag', 'article_id';
 many_to_many( tags => 'article_tag', 'tag' );
-
-belongs_to 'edition_section' => 'Newsmill::Schema::Result::EditionSection',
-    'edition_section_id';
 
 1;
