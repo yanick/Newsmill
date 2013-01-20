@@ -1,0 +1,863 @@
+---
+schema:
+  procedures: {}
+  tables:
+    article_tags:
+      constraints:
+        - deferrable: 1
+          expression: ''
+          fields:
+            - article_tag_id
+          match_type: ''
+          name: ''
+          on_delete: ''
+          on_update: ''
+          options: []
+          reference_fields: []
+          reference_table: ''
+          type: PRIMARY KEY
+        - deferrable: 1
+          expression: ''
+          fields:
+            - article_id
+          match_type: ''
+          name: article_tags_fk_article_id
+          on_delete: CASCADE
+          on_update: CASCADE
+          options: []
+          reference_fields:
+            - article_id
+          reference_table: articles
+          type: FOREIGN KEY
+        - deferrable: 1
+          expression: ''
+          fields:
+            - tag_id
+          match_type: ''
+          name: article_tags_fk_tag_id
+          on_delete: ''
+          on_update: ''
+          options: []
+          reference_fields:
+            - tag_id
+          reference_table: tags
+          type: FOREIGN KEY
+      fields:
+        article_id:
+          data_type: int
+          default_value: ~
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: article_id
+          order: 2
+          size:
+            - 0
+        article_tag_id:
+          data_type: int
+          default_value: ~
+          is_auto_increment: 1
+          is_nullable: 0
+          is_primary_key: 1
+          is_unique: 0
+          name: article_tag_id
+          order: 1
+          size:
+            - 0
+        tag_id:
+          data_type: int
+          default_value: ~
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: tag_id
+          order: 3
+          size:
+            - 0
+      indices:
+        - fields:
+            - article_id
+          name: article_tags_idx_article_id
+          options: []
+          type: NORMAL
+        - fields:
+            - tag_id
+          name: article_tags_idx_tag_id
+          options: []
+          type: NORMAL
+      name: article_tags
+      options: []
+      order: 6
+    articles:
+      constraints:
+        - deferrable: 1
+          expression: ''
+          fields:
+            - article_id
+          match_type: ''
+          name: ''
+          on_delete: ''
+          on_update: ''
+          options: []
+          reference_fields: []
+          reference_table: ''
+          type: PRIMARY KEY
+        - deferrable: 1
+          expression: ''
+          fields:
+            - edition_section_id
+          match_type: ''
+          name: articles_fk_edition_section_id
+          on_delete: CASCADE
+          on_update: CASCADE
+          options: []
+          reference_fields:
+            - edition_section_id
+          reference_table: edition_sections
+          type: FOREIGN KEY
+      fields:
+        article_id:
+          data_type: int
+          default_value: ~
+          is_auto_increment: 1
+          is_nullable: 0
+          is_primary_key: 1
+          is_unique: 0
+          name: article_id
+          order: 1
+          size:
+            - 0
+        bitly_url:
+          data_type: varchar
+          default_value: ~
+          is_nullable: 1
+          is_primary_key: 0
+          is_unique: 0
+          name: bitly_url
+          order: 6
+          size:
+            - 200
+        description:
+          data_type: text
+          default_value: ~
+          is_nullable: 1
+          is_primary_key: 0
+          is_unique: 0
+          name: description
+          order: 5
+          size:
+            - 0
+        edition_section_id:
+          data_type: int
+          default_value: ~
+          is_nullable: 1
+          is_primary_key: 0
+          is_unique: 0
+          name: edition_section_id
+          order: 7
+          size:
+            - 0
+        publication_date:
+          data_type: date
+          default_value: ~
+          is_nullable: 1
+          is_primary_key: 0
+          is_unique: 0
+          name: publication_date
+          order: 4
+          size:
+            - 0
+        title:
+          data_type: varchar
+          default_value: ~
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: title
+          order: 2
+          size:
+            - 200
+        url:
+          data_type: varchar
+          default_value: ~
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: url
+          order: 3
+          size:
+            - 200
+      indices:
+        - fields:
+            - edition_section_id
+          name: articles_idx_edition_section_id
+          options: []
+          type: NORMAL
+      name: articles
+      options: []
+      order: 5
+    edition_sections:
+      constraints:
+        - deferrable: 1
+          expression: ''
+          fields:
+            - edition_section_id
+          match_type: ''
+          name: ''
+          on_delete: ''
+          on_update: ''
+          options: []
+          reference_fields: []
+          reference_table: ''
+          type: PRIMARY KEY
+        - deferrable: 1
+          expression: ''
+          fields:
+            - edition_id
+          match_type: ''
+          name: edition_sections_fk_edition_id
+          on_delete: CASCADE
+          on_update: CASCADE
+          options: []
+          reference_fields:
+            - edition_id
+          reference_table: editions
+          type: FOREIGN KEY
+        - deferrable: 1
+          expression: ''
+          fields:
+            - section_type_id
+          match_type: ''
+          name: edition_sections_fk_section_type_id
+          on_delete: ''
+          on_update: ''
+          options: []
+          reference_fields:
+            - edition_type_id
+          reference_table: section_types
+          type: FOREIGN KEY
+      fields:
+        edition_id:
+          data_type: int
+          default_value: ~
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: edition_id
+          order: 2
+          size:
+            - 0
+        edition_section_id:
+          data_type: int
+          default_value: ~
+          is_auto_increment: 1
+          is_nullable: 0
+          is_primary_key: 1
+          is_unique: 0
+          name: edition_section_id
+          order: 1
+          size:
+            - 0
+        header:
+          data_type: text
+          default_value: ~
+          is_nullable: 1
+          is_primary_key: 0
+          is_unique: 0
+          name: header
+          order: 4
+          size:
+            - 0
+        rank:
+          data_type: int
+          default_value: 50
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: rank
+          order: 5
+          size:
+            - 0
+        section_type_id:
+          data_type: int
+          default_value: ~
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: section_type_id
+          order: 3
+          size:
+            - 0
+      indices:
+        - fields:
+            - edition_id
+          name: edition_sections_idx_edition_id
+          options: []
+          type: NORMAL
+        - fields:
+            - section_type_id
+          name: edition_sections_idx_section_type_id
+          options: []
+          type: NORMAL
+      name: edition_sections
+      options: []
+      order: 4
+    editions:
+      constraints:
+        - deferrable: 1
+          expression: ''
+          fields:
+            - edition_id
+          match_type: ''
+          name: ''
+          on_delete: ''
+          on_update: ''
+          options: []
+          reference_fields: []
+          reference_table: ''
+          type: PRIMARY KEY
+      fields:
+        edition_date:
+          data_type: date
+          default_value: ~
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: edition_date
+          order: 3
+          size:
+            - 0
+        edition_id:
+          data_type: int
+          default_value: ~
+          is_auto_increment: 1
+          is_nullable: 0
+          is_primary_key: 1
+          is_unique: 0
+          name: edition_id
+          order: 1
+          size:
+            - 0
+        footer:
+          data_type: text
+          default_value: ~
+          is_nullable: 1
+          is_primary_key: 0
+          is_unique: 0
+          name: footer
+          order: 5
+          size:
+            - 0
+        header:
+          data_type: text
+          default_value: ~
+          is_nullable: 1
+          is_primary_key: 0
+          is_unique: 0
+          name: header
+          order: 4
+          size:
+            - 0
+        title:
+          data_type: varchar
+          default_value: ~
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: title
+          order: 2
+          size:
+            - 200
+      indices: []
+      name: editions
+      options: []
+      order: 1
+    section_types:
+      constraints:
+        - deferrable: 1
+          expression: ''
+          fields:
+            - edition_type_id
+          match_type: ''
+          name: ''
+          on_delete: ''
+          on_update: ''
+          options: []
+          reference_fields: []
+          reference_table: ''
+          type: PRIMARY KEY
+        - deferrable: 1
+          expression: ''
+          fields:
+            - label
+          match_type: ''
+          name: label_unique
+          on_delete: ''
+          on_update: ''
+          options: []
+          reference_fields: []
+          reference_table: ''
+          type: UNIQUE
+      fields:
+        edition_type_id:
+          data_type: int
+          default_value: ~
+          is_auto_increment: 1
+          is_nullable: 0
+          is_primary_key: 1
+          is_unique: 0
+          name: edition_type_id
+          order: 1
+          size:
+            - 0
+        label:
+          data_type: varchar
+          default_value: ~
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 1
+          name: label
+          order: 2
+          size:
+            - 80
+      indices: []
+      name: section_types
+      options: []
+      order: 2
+    tags:
+      constraints:
+        - deferrable: 1
+          expression: ''
+          fields:
+            - tag_id
+          match_type: ''
+          name: ''
+          on_delete: ''
+          on_update: ''
+          options: []
+          reference_fields: []
+          reference_table: ''
+          type: PRIMARY KEY
+        - deferrable: 1
+          expression: ''
+          fields:
+            - label
+          match_type: ''
+          name: unique_label
+          on_delete: ''
+          on_update: ''
+          options: []
+          reference_fields: []
+          reference_table: ''
+          type: UNIQUE
+      fields:
+        label:
+          data_type: varchar
+          default_value: ~
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 1
+          name: label
+          order: 2
+          size:
+            - 80
+        tag_id:
+          data_type: int
+          default_value: ~
+          is_auto_increment: 1
+          is_nullable: 0
+          is_primary_key: 1
+          is_unique: 0
+          name: tag_id
+          order: 1
+          size:
+            - 0
+      indices: []
+      name: tags
+      options: []
+      order: 3
+  triggers: {}
+  views: {}
+translator:
+  add_drop_table: 0
+  filename: ~
+  no_comments: 0
+  parser_args:
+    DBIx::Class::Schema: ~
+    DBIx::Schema: ~
+    package: &1 !!perl/hash:Newsmill::Schema
+      class_mappings:
+        DBIx::Class::DeploymentHandler::VersionStorage::Standard::VersionResult: __VERSION
+        Newsmill::Schema::Result::Article: Article
+        Newsmill::Schema::Result::ArticleTag: ArticleTag
+        Newsmill::Schema::Result::Edition: Edition
+        Newsmill::Schema::Result::EditionSection: EditionSection
+        Newsmill::Schema::Result::SectionType: SectionType
+        Newsmill::Schema::Result::Tag: Tag
+      source_registrations:
+        Article: !!perl/hash:DBIx::Class::ResultSource::Table
+          _columns:
+            article_id:
+              data_type: int
+              is_auto_increment: 1
+            bitly_url:
+              data_type: varchar
+              is_nullable: 1
+              size: 200
+            description:
+              data_type: text
+              is_nullable: 1
+            edition_section_id:
+              data_type: int
+              is_nullable: 1
+            publication_date:
+              _ic_dt_method: date
+              _inflate_info:
+                deflate: !!perl/code '{ "DUMMY" }'
+                inflate: !!perl/code '{ "DUMMY" }'
+              data_type: date
+              is_nullable: 1
+            title:
+              data_type: varchar
+              is_nullable: 0
+              size: 200
+            url:
+              data_type: varchar
+              is_nullable: 0
+              size: 200
+          _columns_info_loaded: 0
+          _ordered_columns:
+            - article_id
+            - title
+            - url
+            - publication_date
+            - description
+            - bitly_url
+            - edition_section_id
+          _primaries: &2
+            - article_id
+          _relationships:
+            article_tags:
+              attrs:
+                accessor: multi
+                cascade_copy: 1
+                cascade_delete: 1
+                join_type: LEFT
+              class: Newsmill::Schema::Result::ArticleTag
+              cond:
+                foreign.article_id: self.article_id
+              source: Newsmill::Schema::Result::ArticleTag
+            edition_section:
+              attrs:
+                accessor: single
+                fk_columns:
+                  edition_section_id: 1
+                is_foreign_key_constraint: 1
+                undef_on_null_fk: 1
+              class: Newsmill::Schema::Result::EditionSection
+              cond:
+                foreign.edition_section_id: self.edition_section_id
+              source: Newsmill::Schema::Result::EditionSection
+          _unique_constraints:
+            primary: *2
+          name: articles
+          result_class: Newsmill::Schema::Result::Article
+          resultset_attributes: {}
+          resultset_class: DBIx::Class::ResultSet
+          schema: *1
+          source_name: Article
+        ArticleTag: !!perl/hash:DBIx::Class::ResultSource::Table
+          _columns:
+            article_id:
+              data_type: int
+              is_foreign_key: 1
+              is_nullable: 0
+            article_tag_id:
+              data_type: int
+              is_auto_increment: 1
+            tag_id:
+              data_type: int
+              is_foreign_key: 1
+              is_nullable: 0
+          _columns_info_loaded: 0
+          _ordered_columns:
+            - article_tag_id
+            - article_id
+            - tag_id
+          _primaries: &3
+            - article_tag_id
+          _relationships:
+            article:
+              attrs:
+                accessor: single
+                fk_columns:
+                  article_id: 1
+                is_foreign_key_constraint: 1
+                undef_on_null_fk: 1
+              class: Newsmill::Schema::Result::Article
+              cond:
+                foreign.article_id: self.article_id
+              source: Newsmill::Schema::Result::Article
+            tag:
+              attrs:
+                accessor: single
+                fk_columns:
+                  tag_id: 1
+                is_foreign_key_constraint: 1
+                undef_on_null_fk: 1
+              class: Newsmill::Schema::Result::Tag
+              cond:
+                foreign.tag_id: self.tag_id
+              source: Newsmill::Schema::Result::Tag
+          _unique_constraints:
+            primary: *3
+          name: article_tags
+          result_class: Newsmill::Schema::Result::ArticleTag
+          resultset_attributes: {}
+          resultset_class: DBIx::Class::ResultSet
+          schema: *1
+          source_name: ArticleTag
+        Edition: !!perl/hash:DBIx::Class::ResultSource::Table
+          _columns:
+            edition_date:
+              _ic_dt_method: date
+              _inflate_info:
+                deflate: !!perl/code '{ "DUMMY" }'
+                inflate: !!perl/code '{ "DUMMY" }'
+              data_type: date
+              is_nullable: 0
+            edition_id:
+              data_type: int
+              is_auto_increment: 1
+            footer:
+              data_type: text
+              is_nullable: 1
+            header:
+              data_type: text
+              is_nullable: 1
+            title:
+              data_type: varchar
+              is_nullable: 0
+              size: 200
+          _columns_info_loaded: 0
+          _ordered_columns:
+            - edition_id
+            - title
+            - edition_date
+            - header
+            - footer
+          _primaries: &4
+            - edition_id
+          _relationships:
+            edition_sections:
+              attrs:
+                accessor: multi
+                cascade_copy: 1
+                cascade_delete: 1
+                join_type: LEFT
+              class: Newsmill::Schema::Result::EditionSection
+              cond:
+                foreign.edition_id: self.edition_id
+              source: Newsmill::Schema::Result::EditionSection
+          _unique_constraints:
+            primary: *4
+          name: editions
+          result_class: Newsmill::Schema::Result::Edition
+          resultset_attributes: {}
+          resultset_class: DBIx::Class::ResultSet
+          schema: *1
+          source_name: Edition
+        EditionSection: !!perl/hash:DBIx::Class::ResultSource::Table
+          _columns:
+            edition_id:
+              data_type: int
+              is_foreign_key: 1
+              is_nullable: 0
+            edition_section_id:
+              data_type: int
+              is_auto_increment: 1
+            header:
+              data_type: text
+              is_nullable: 1
+            rank:
+              data_type: int
+              default_value: 50
+              is_nullable: 0
+            section_type_id:
+              data_type: int
+              is_nullable: 0
+          _columns_info_loaded: 0
+          _ordered_columns:
+            - edition_section_id
+            - edition_id
+            - section_type_id
+            - header
+            - rank
+          _primaries: &5
+            - edition_section_id
+          _relationships:
+            articles:
+              attrs:
+                accessor: multi
+                cascade_copy: 1
+                cascade_delete: 1
+                join_type: LEFT
+              class: Newsmill::Schema::Result::Article
+              cond:
+                foreign.edition_section_id: self.edition_section_id
+              source: Newsmill::Schema::Result::Article
+            edition:
+              attrs:
+                accessor: single
+                fk_columns:
+                  edition_id: 1
+                is_foreign_key_constraint: 1
+                undef_on_null_fk: 1
+              class: Newsmill::Schema::Result::Edition
+              cond:
+                foreign.edition_id: self.edition_id
+              source: Newsmill::Schema::Result::Edition
+            section_type:
+              attrs:
+                accessor: single
+                fk_columns:
+                  section_type_id: 1
+                is_foreign_key_constraint: 1
+                undef_on_null_fk: 1
+              class: Newsmill::Schema::Result::SectionType
+              cond:
+                foreign.edition_type_id: self.section_type_id
+              source: Newsmill::Schema::Result::SectionType
+          _unique_constraints:
+            primary: *5
+          name: edition_sections
+          result_class: Newsmill::Schema::Result::EditionSection
+          resultset_attributes: {}
+          resultset_class: DBIx::Class::ResultSet
+          schema: *1
+          source_name: EditionSection
+        SectionType: !!perl/hash:DBIx::Class::ResultSource::Table
+          _columns:
+            edition_type_id:
+              data_type: int
+              is_auto_increment: 1
+            label:
+              data_type: varchar
+              is_nullable: 0
+              size: 80
+          _columns_info_loaded: 0
+          _ordered_columns:
+            - edition_type_id
+            - label
+          _primaries: &6
+            - edition_type_id
+          _relationships: {}
+          _unique_constraints:
+            label_unique:
+              - label
+            primary: *6
+          name: section_types
+          result_class: Newsmill::Schema::Result::SectionType
+          resultset_attributes: {}
+          resultset_class: DBIx::Class::ResultSet
+          schema: *1
+          source_name: SectionType
+        Tag: !!perl/hash:DBIx::Class::ResultSource::Table
+          _columns:
+            label:
+              data_type: varchar
+              is_nullable: 0
+              size: 80
+            tag_id:
+              data_type: int
+              is_auto_increment: 1
+          _columns_info_loaded: 0
+          _ordered_columns:
+            - tag_id
+            - label
+          _primaries: &7
+            - tag_id
+          _relationships: {}
+          _unique_constraints:
+            primary: *7
+            unique_label:
+              - label
+          name: tags
+          result_class: Newsmill::Schema::Result::Tag
+          resultset_attributes: {}
+          resultset_class: DBIx::Class::ResultSet
+          schema: *1
+          source_name: Tag
+        __VERSION: !!perl/hash:DBIx::Class::ResultSource::Table
+          _columns:
+            ddl:
+              data_type: text
+              is_nullable: 1
+            id:
+              data_type: int
+              is_auto_increment: 1
+            upgrade_sql:
+              data_type: text
+              is_nullable: 1
+            version:
+              data_type: varchar
+              size: 50
+          _columns_info_loaded: 0
+          _ordered_columns:
+            - id
+            - version
+            - ddl
+            - upgrade_sql
+          _primaries: &8
+            - id
+          _relationships: {}
+          _unique_constraints:
+            dbix_class_deploymenthandler_versions_version:
+              - version
+            primary: *8
+          name: dbix_class_deploymenthandler_versions
+          result_class: DBIx::Class::DeploymentHandler::VersionStorage::Standard::VersionResult
+          resultset_attributes: {}
+          resultset_class: DBIx::Class::DeploymentHandler::VersionStorage::Standard::VersionResultSet
+          schema: *1
+          source_name: __VERSION
+      storage: !!perl/hash:DBIx::Class::Storage::DBI::SQLite
+        _conn_pid: 9921
+        _connect_info:
+          - DBI:SQLite:/home/yanick/work/perl-modules/Newsmill/share/newsmill-schema.db
+          - ''
+          - ''
+        _dbh: !!perl/hash:DBI::db {}
+        _dbh_autocommit: 1
+        _dbh_details: {}
+        _dbh_gen: 0
+        _dbi_connect_info:
+          - DBI:SQLite:/home/yanick/work/perl-modules/Newsmill/share/newsmill-schema.db
+          - ''
+          - ''
+          - &9
+            AutoCommit: 1
+            PrintError: 0
+            RaiseError: 1
+            ShowErrorStatement: 1
+        _dbic_connect_attributes: *9
+        _driver_determined: 1
+        _in_do_block: 0
+        _sql_maker: ~
+        _sql_maker_opts: {}
+        savepoints: []
+        schema: *1
+        transaction_depth: 0
+    sources:
+      - Article
+      - EditionSection
+      - ArticleTag
+      - Tag
+      - SectionType
+      - Edition
+  parser_type: SQL::Translator::Parser::DBIx::Class
+  producer_args: {}
+  producer_type: SQL::Translator::Producer::YAML
+  show_warnings: 0
+  trace: 0
+  version: 0.11016

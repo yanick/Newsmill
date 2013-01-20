@@ -39,6 +39,4 @@ has_many edition_sections => 'Newsmill::Schema::Result::EditionSection', 'editio
 
 1;
 
-1;
-
 __END__

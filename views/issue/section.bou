@@ -1,0 +1,10 @@
+#( $section )
+
+section {
+    h2 { $section->section_type->label };
+
+    markdown $section->header;
+
+    show( article => $_->article )
+        for $section->section_articles->search({},{order_by => 'rank'})->all;
+}

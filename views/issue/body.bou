@@ -1,0 +1,2 @@
+#( $inner )
+body { body_row { body_span { $inner->() } } }

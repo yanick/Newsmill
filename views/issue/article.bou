@@ -1,0 +1,6 @@
+#($article)
+
+article {
+    h3 { anchor $article->url => $article->title };
+    p { $article->description };
+}

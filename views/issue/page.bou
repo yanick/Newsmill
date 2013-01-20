@@ -1,0 +1,24 @@
+use Template::Caribou::Tags::HTML qw/ :all /;
+use Template::Caribou::Tags::HTML::Extended qw/ 
+    markdown anchor javascript_include css_include 
+    doctype
+/;
+
+doctype 'html 5';
+html { attr lang => 'en';
+    head { 
+        javascript_include '/javascripts/jquery.js';
+        javascript_include '/bootstrap/js/bootstrap.min.js';
+        css_include '/bootstrap/css/bootstrap.min.css';
+    };
+
+    show( 'body' => sub {
+        h1 {  $self->issue->title;  };
+        markdown $self->issue->header;
+
+        show( 'section' => $_ ) for
+            $self->issue->edition_sections->search({}, {order_by => 'rank'})->all;
+        
+        markdown $self->issue->footer;
+    } );
+}
